@@ -4,13 +4,13 @@ import "codemirror/keymap/sublime";
 import "codemirror/theme/monokai.css";
 
 export interface ILog extends IReactCodemirror {
-  polling?: number;
+  polling?: number | false;
   request?: (params?: any) => Promise<any>;
 }
 
 export type Timer = NodeJS.Timeout | null;
 
-const Log: FC<ILog> = ({ polling, request, ...rest }) => {
+const Log: FC<ILog> = ({ polling = false, request, ...rest }) => {
 	const timer = useRef<Timer>(null)
   const [value, setValue] = useState();
 
