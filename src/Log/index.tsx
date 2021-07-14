@@ -12,7 +12,7 @@ export type Timer = NodeJS.Timeout | null;
 
 const Log: FC<ILog> = ({ polling, request, ...rest }) => {
   const timer = useRef<Timer>(null);
-	
+
   const [value, setValue] = useState();
 
   const setter = async () => {
@@ -23,7 +23,7 @@ const Log: FC<ILog> = ({ polling, request, ...rest }) => {
 
   useEffect(() => {
     setter();
-  }, []);
+  }, [request]);
 
   useEffect(() => {
     if (!polling) return;
