@@ -23,7 +23,7 @@ const Log: FC<ILog> = ({ polling, request, ...rest }) => {
 
   useEffect(() => {
     setter();
-  }, [request]);
+  }, []);
 
   useEffect(() => {
     if (!polling) return;
