@@ -1,6 +1,6 @@
 {
   "name": "@sjognad/log",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A react component to preview log.",
   "module": "es/index.js",
   "main": "lib/index.js",
