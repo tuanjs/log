@@ -11,16 +11,23 @@ export interface ILog extends IReactCodemirror {
 export type Timer = NodeJS.Timeout | null;
 
 const Log: FC<ILog> = ({ polling, request, ...rest }) => {
-	const timer = useRef<Timer>(null)
+  const timer = useRef<Timer>(null);
+	
   const [value, setValue] = useState();
+
+  const setter = async () => {
+    if (!request) return;
+    const { data } = await request();
+    setValue(data);
+  };
+
+  useEffect(() => {
+    setter();
+  }, []);
 
   useEffect(() => {
     if (!polling) return;
-    if (!request) return;
-    timer.current = setInterval(async () => {
-      const { data } = await request();
-      setValue(data);
-    }, polling);
+    timer.current = setInterval(setter, polling);
     return () => {
       timer.current && clearInterval(timer.current);
       timer.current = null;
