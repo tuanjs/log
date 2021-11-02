@@ -1,9 +1,7 @@
 import { FC, useEffect, useState, useRef } from "react";
-import CodeMirror, { IReactCodemirror } from "@uiw/react-codemirror";
-import "codemirror/keymap/sublime";
-import "codemirror/theme/monokai.css";
+import CodeMirror, { ReactCodeMirrorProps } from "@uiw/react-codemirror";
 
-export interface ILog extends IReactCodemirror {
+export interface ILog extends ReactCodeMirrorProps {
   polling?: number;
   request?: (params?: any) => Promise<any>;
 }
@@ -37,11 +35,8 @@ const Log: FC<ILog> = ({ polling, request, ...rest }) => {
   return (
     <CodeMirror
       value={value}
-      options={{
-        theme: "monokai",
-        keyMap: "sublime",
-        readOnly: true,
-      }}
+      editable={false}
+      theme="dark"
       {...rest}
     />
   );
