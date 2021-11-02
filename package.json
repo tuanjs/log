@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/dangojs/log#readme",
   "dependencies": {
-    "@uiw/react-codemirror": "^4.1.0"
+    "@uiw/react-codemirror": "^3.2.7"
   },
   "peerDependencies": {
     "react": "^17.0.2",
